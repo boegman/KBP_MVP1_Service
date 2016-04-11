@@ -1,0 +1,25 @@
+{
+	"appenders": [
+        {
+            "type": "console",
+            "layout": {
+                "type": "pattern",
+                "pattern": "%d{ISO8601} - %-5p - %c - %m"
+            }
+        },
+        {
+            "type": "dateFile",
+            "filename": "./system.log",
+            "pattern": "-yyyy-MM-dd",
+            "alwaysIncludePattern": false,
+            "layout": {
+                "type": "pattern",
+                "pattern": "%d{ISO8601} - %-5p - %-50c - %m%n"
+            }
+        }
+    ],
+    "levels": {
+        "[all]": "TRACE"
+    },
+    "replaceConsole": true
+}

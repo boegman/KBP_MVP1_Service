@@ -1,0 +1,1 @@
+﻿exports.json = 'application/json';

@@ -1,0 +1,92 @@
+﻿// This file cannot contain comments and comments should be removed before using it in the actual config file. This is an example file and the comments
+// are used to explain the various parts of the file and potential options. For detailed help go to https://github.com/nomiddlename/log4js-node.
+//
+// NB.
+// log4js-node uses the extremely strict JSON.parse() method to parse this file. Watch out for those pesky commas that is not followed by another property.
+//
+// NNB.
+// MAKE DOUBLE SURE THE FILE IS SAVED WITH A 'UTF8' ENCODING AND NOT A 'UTF8 BOM' ENCODING. IT WILL CAUSE ERRORS OTHERWISE.
+{
+    "appenders": [
+        // the console appender
+		{
+            "type": "console",
+            "layout": {
+                "type": "pattern",
+				// %d{ISO8601} is the date in iso format
+				// %-5p is the left justified log level
+				// %c is the logger name / category
+				// %m is the message
+				// %n is the newline
+                "pattern": "%d{ISO8601} - %-5p - %-50c - %m%n 
+				// this is what we do in log4net for ovaflo: 
+				// %d [%t] %-5p %c [%x] - %m%n
+				// %d is the date
+				// %t is thread, we might want to use %x for token when going multiple node instances
+				// %-5p is the log level spaced with 5 characters
+				// %c is the namespace
+				// %m is the log message
+				// %n is the newline
+            }
+			// don't specify the categories if the appender should be used for root.
+			// otherwise specify the category like so:
+			// category: ["category1", "category2"]
+        },
+		// date rolling file appender
+		{
+			"type": "dateFile",
+			"filename": "blah.log",
+			"pattern": "-yyyy-MM-dd",
+			"alwaysIncludePattern": false
+		},
+		// Hourly log files kept for 1 month.
+		{
+			"type":"dateFile",
+			"filename":"logs/calibrate.log",      
+			"pattern":"-dd--hh.log",
+			"alwaysIncludePattern":false,
+			"category":"calibrate"
+		},
+		// file appender
+		{
+			"type": "file",
+			"absolute": true,
+			"filename": "c:/to/log/location/tmp-test.log",
+			"maxLogSize": 1024,
+			"backups": 3,
+			"category": "test"
+		}
+		// other appenders (see site mentioned above for more details):
+		// * SMTP
+		// * hook.io
+		// * GELF
+		// * Multiprocess
+		// * Loggly
+		// * Clustered
+    ],
+    "levels": {
+		// possible log levels: ALL, TRACE, DEBUG, INFO, WARN, ERROR, FATAL, OFF
+        "[all]": "INFO",
+        "category1": "ERROR",
+        "category2": "DEBUG"
+    },
+	// If I understand correctly this will hijack all console.log messages to use the appenders.
+    replaceConsole: true
+}
+
+// potential categories
+// --------------------------------------------
+// * app.controllers.codesController
+// * app.controllers.notificationsController
+// * app.controllers.tokensController
+// * app.controllers.transactionsController
+// * app.controllers.usersController
+// * app.middlewares.validateRequest
+// * app.models.transaction
+// * app.models.user
+// * app.services.authenticationService
+// * app.services.channelService
+// * app.services.hashService
+// * app.services.masterPassService
+// * app.routes
+// * server
