@@ -2,6 +2,7 @@
 var logger = log4js.getLogger('app.services.authenticationService');
 
 var User = require('../models/user');
+var jwt = require('jwt-simple');
 var nconf = require('nconf');
 
 var activeUserCache = {};
@@ -62,5 +63,6 @@ function getActiveUser(req, callbackFunc, errorCallbackFunc) {
 }
 
 module.exports = {
-    getActiveUser: getActiveUser
+    getActiveUser: getActiveUser,
+    getToken: getToken
 };

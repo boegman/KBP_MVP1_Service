@@ -15,7 +15,7 @@ var cors = require('cors');
 var nconf = require('nconf');
 var compression = require('compression');
 
-// configuration ===========================================
+// configuration / Start-up parameter "NODE_ENV" ===========
 nconf.argv().env();
 nconf.file({ file: path.join(process.cwd(), '/config/env/', (process.env.NODE_ENV || 'dev') + '/settings.json') });
 var enableSsl = nconf.get("enableSsl");
