@@ -34,5 +34,5 @@ This template covers:
 
 ### Who do I talk to? ###
 
-* GeanB@Ovationsgroup.com
-* DavidB@Ovationsgroup.com
+* @boegman
+* @davidbarkhuizen 
