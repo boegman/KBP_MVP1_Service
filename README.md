@@ -23,7 +23,7 @@ This template covers:
 * Add to Bit-Bucket
 * Customise like crazy
 * Add tests
-* Add you're project to CodeShip (Ovations account), add the AWS details and test scripts
+* Add your project to CodeShip (Ovations account), add the AWS details and test scripts
 * Set-up the AWS EB instance to be deployed too
 * Check-in
 
