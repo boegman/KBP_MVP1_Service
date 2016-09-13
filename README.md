@@ -1,6 +1,6 @@
 # Template for: Node REST service on AWS  #
 
-Please update this link to show you're codeship build status: 
+Please update this link to show your codeship build status: 
 [ ![Codeship Status for ovmobile/ordercloudservice](https://codeship.com/projects/9a9936e0-e2ac-0133-a2de-0229a9d1976f/status?branch=master)](https://codeship.com/projects/145659)
 
 
