@@ -18,9 +18,7 @@ This template covers:
 
 ### How do I get set up? ###
 
-* Clone the repo
-* Rename
-* Add to Bit-Bucket
+* Fork the repository
 * Customise like crazy
 * Add tests
 * Add your project to CodeShip (Ovations account), add the AWS details and test scripts
@@ -39,4 +37,4 @@ This template covers:
 ### Who do I talk to? ###
 
 * @boegman
-* @davidbarkhuizen
+* @Nathaneel777 
