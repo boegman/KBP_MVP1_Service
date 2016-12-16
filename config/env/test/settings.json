@@ -4,16 +4,9 @@
 		"pfx": "www.ovapay.com.pfx",
 		"passphrase": ".GwmWWNh3o"
 	},
-
-	"users": {
-		"url"		: "mongodb://127.0.0.1:27017/",
-		"db"		: "ovaPayDev",
-		"collection": "users",
-		"secret"	: "M7s7bfU!J9@@ok8Egt$S&N6"
-	},
-	"order": {
-		"url"		: "mongodb://127.0.0.1:27017/",
-		"db"		: "OrderCloud",
-		"collection": "order"
+	"hotels": {
+		"url"		: "mongodb://172.31.32.20:27017/",
+		"db"		: "test",
+		"collection": "hotels"
 	}
 }

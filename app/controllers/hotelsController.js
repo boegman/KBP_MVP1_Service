@@ -2,13 +2,14 @@ var log4js = require('log4js')
 var logger = log4js.getLogger('app.controllers.hotels')
 
 var express = require('express')
+var nodemailer = require('nodemailer')
 // var nconf = require('nconf')
 // var mongoose = require('mongoose')
 var hotels = require('../models/hotels')
 // var authenticationService = require('../services/authenticationService')
 // var httpStatusCode = require('../constants/httpStatusCodes')
 
-var request = require('request')
+// var request = require('request')
 // var httpMethods = require('./../constants/httpMethods')
 // var mimeTypes = require('./../constants/mimeTypes')
 
@@ -23,6 +24,40 @@ router.get('', function (req, res, next) {
     logger.debug('Found some hotels')
     res.json(hotels)
   })
+})
+
+router.post('', function (req, res) {
+  logger.debug('Hotels req: method:%s, url=%s, body=%s', req.method, req.originalUrl, JSON.stringify(req.body))
+})
+
+// create reusable transport method (opens pool of SMTP connections)
+var smtpTransport = nodemailer.createTransport('SMTP', {
+  service: 'Gmail',
+  auth: {
+    user: 'gboegman@gmail.com',
+    pass: 'alpha.A1'
+  }
+})
+
+// setup e-mail data with unicode symbols
+var mailOptions = {
+  from: 'Gean Boegman <gboegman@gmail.com>', // sender address
+  to: 'prenevin@psybergate.co.za', // list of receivers
+  subject: 'Hello', // Subject line
+  text: 'Hello world', // plaintext body
+  html: '<b>Hello world</b>' // html body
+}
+
+// send mail with defined transport object
+smtpTransport.sendMail(mailOptions, function (error, response) {
+  if (error) {
+    console.log(error)
+  } else {
+    console.log('Message sent: ' + response.message)
+  }
+
+    // if you don't want to use this transport object anymore, uncomment following line
+    // smtpTransport.close(); // shut down the connection pool, no more messages
 })
 
 //  {"items":[{"id":2096,"price":79,"quantity":1},{"id":2099,"price":89,"quantity":1}],"organisationId":131,"userId":21801,"amount":168}
