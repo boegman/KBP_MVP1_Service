@@ -1,1 +1,1 @@
-﻿exports.json = 'application/json';
+exports.json = 'application/json'
