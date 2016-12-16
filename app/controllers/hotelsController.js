@@ -28,7 +28,9 @@ router.get('', function (req, res, next) {
 
 router.post('', function (req, res) {
   logger.debug('Hotels req: method:%s, url=%s, body=%s', req.method, req.originalUrl, JSON.stringify(req.body))
-  sendmail()
+
+  // sendmail(mailOptions)
+  sendmail(req.body)
 })
 
 // create reusable transport method (opens pool of SMTP connections)
@@ -44,16 +46,16 @@ var smtpTransport = nodemailer.createTransport('SMTP', {
 
 // setup e-mail data with unicode symbols
 var mailOptions = {
-  from: 'No Reply at Travaar <noreply@travaar.com>', // sender address
-  to: 'prenevin@psybergate.co.za, tumbone@gmail.com', // list of receivers
-  subject: 'Hello', // Subject line
-  text: 'Hello world', // plaintext body
-  html: '<b>Hello world</b>' // html body
+  'from': 'No Reply at Travaar <noreply@travaar.com>', // sender address
+  'to': 'prenevin@psybergate.co.za, tumbone@gmail.com', // list of receivers
+  'subject': 'Hello', // Subject line
+  'text': 'Hello world', // plaintext body
+  'html': '<b>Hello world</b>' // html body
 }
 
 // send mail with defined transport object
-function sendmail () {
-  smtpTransport.sendMail(mailOptions, function (error, response) {
+function sendmail (options) {
+  smtpTransport.sendMail(options, function (error, response) {
     if (error) {
       console.log(error)
     } else {
